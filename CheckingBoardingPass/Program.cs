@@ -14,20 +14,17 @@ namespace CheckingBoardingPass
         private const int DEPTURE_GATE = 5;
         private int seatNumber;
 
+        private int[] seats = new int[40];
+        private string[] names = new string[40];
+
         static void Main(string[] args)
         {
-        }
-
-        public Program(int number)
-        {
-            int[] seat = new int[number];
-            string[] name = new string[number];
         }
 
         //This method lists all passengers' information
         public void Info()
         {
-
+            
         }
 
         //This method displays available seats
