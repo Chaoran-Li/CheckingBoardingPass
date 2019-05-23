@@ -31,8 +31,8 @@ namespace GenerateBoardingPass
                 Console.WriteLine("Please enter Name or PRESS q to quit");
                 string input = Console.ReadLine();
                 while(true) {
-                    if (input == null) {
-                        Console.WriteLine("Please enter passenger name...");
+                    if (input == "") {
+                        Console.WriteLine("The name cannot be null...");
                     } else {
                         break;
                     }
@@ -65,6 +65,7 @@ namespace GenerateBoardingPass
                 pg.sercurityNumber = random.Next(30000, 999999);
                 sNumbers[i - 1] = pg.sercurityNumber;
 
+                //Generate the depature time
                 DateTime now = DateTime.Now;
 
                 //Generate boarding pass
