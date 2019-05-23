@@ -27,8 +27,17 @@ namespace GenerateBoardingPass
         {
             int i = 1;
             while(true) {
+                
                 Console.WriteLine("Please enter Name or PRESS q to quit");
                 string input = Console.ReadLine();
+                while(true) {
+                    if (input == null) {
+                        Console.WriteLine("Please enter passenger name...");
+                    } else {
+                        break;
+                    }
+                }
+
                 if (input == "q" || input == "Q") {
                     break;
                 }
