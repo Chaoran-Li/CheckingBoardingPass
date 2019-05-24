@@ -14,9 +14,45 @@ namespace GenerateBoardingPass
     class Passenger
     {
         private string passengerName;
-        private int sercurityNumber;
+        public string _passengerName
+        {
+            get
+            {
+                return passengerName;
+            }
+            set
+            {
+                passengerName = value;
+            }
+        }
+
+        private int securityNumber;
+        public int _securityNumber
+        {
+            get
+            {
+                return securityNumber;
+            }
+            set
+            {
+                securityNumber = value;
+            }
+        }
+
         private const int DEPTURE_GATE = 5;
+
         private int seatNumber;
+        public int _seatNumber
+        {
+            get
+            {
+                return seatNumber;
+            }
+            set
+            {
+                seatNumber = value;
+            }
+        }
         
         private static int[] seats = new int[41];
         private static string[] names = new string[41];
@@ -47,8 +83,8 @@ namespace GenerateBoardingPass
                     }
                     else if (input.Length <= 5)
                     {
-                        pg.passengerName = input;
-                        names[i - 1] = pg.passengerName;
+                        pg._passengerName = input;
+                        names[i - 1] = pg._passengerName;
                         break;
                     }
                     else if (input.Length > 5)
@@ -65,8 +101,8 @@ namespace GenerateBoardingPass
 
                 if (i <= 40)
                 {
-                    pg.seatNumber = i;
-                    seats[i - 1] = pg.seatNumber;
+                    pg._seatNumber = i;
+                    seats[i - 1] = pg._seatNumber;
 
                 }
                 else
@@ -77,8 +113,8 @@ namespace GenerateBoardingPass
 
                 //Generate random security numbers
                 Random random = new Random();
-                pg.sercurityNumber = random.Next(30000, 999999);
-                sNumbers[i - 1] = pg.sercurityNumber;
+                pg._securityNumber = random.Next(30000, 999999);
+                sNumbers[i - 1] = pg._securityNumber;
 
                 //Generate the depature time
                 DateTime now = DateTime.Now;
@@ -86,7 +122,7 @@ namespace GenerateBoardingPass
                 //Generate boarding pass
                 Console.WriteLine();
                 Console.WriteLine("**************Boarding Pass*************");
-                Console.WriteLine("Passenger name: " + pg.passengerName);
+                Console.WriteLine("Passenger name: " + pg._passengerName);
                 Console.WriteLine("Seat No. " + i);
                 Console.WriteLine("Gate No. " + DEPTURE_GATE);
                 Console.WriteLine("Depature Time: " + now);
