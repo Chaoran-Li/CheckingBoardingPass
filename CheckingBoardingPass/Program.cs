@@ -138,7 +138,7 @@ namespace GenerateBoardingPass
         }
 
         //This method lists all passengers' information
-        public static void Info()
+        private static void Info()
         {
             for (int i = 0; i < 40; i++) {
                 Console.WriteLine("Passenger {0}: Name: {1}, Seat number: {2} and security number {3}", i + 1, names[i], seats[i], sNumbers[i]);
@@ -146,7 +146,7 @@ namespace GenerateBoardingPass
         }
 
         //This method displays available seats
-        public static void Display(int ocuppied)
+        private static void Display(int ocuppied)
         {
             Console.WriteLine("Available seats is after {0}", ocuppied);
         }
