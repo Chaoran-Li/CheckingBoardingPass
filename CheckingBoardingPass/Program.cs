@@ -18,7 +18,6 @@ namespace GenerateBoardingPass
         private const int DEPTURE_GATE = 5;
         private int seatNumber;
         
-
         private static int[] seats = new int[41];
         private static string[] names = new string[41];
         private static int[] sNumbers = new int[41];
@@ -26,40 +25,56 @@ namespace GenerateBoardingPass
         static void Main(string[] args)
         {
             int i = 1;
-            while(true) {
-                
-                Console.WriteLine("Please enter Name or PRESS q to quit");
+            while(true)
+            {
+                Console.WriteLine("Please enter NAME or PRESS q to quit");
                 string input = Console.ReadLine();
-                while(true) {
-                    if (input == "") {
-                        Console.WriteLine("The name cannot be null...");
-                    } else {
+                if (input == "q" || input == "Q")
+                {
+                    break;
+                }
+
+                Passenger pg = new Passenger();
+
+                //Corner case check
+                while (true)
+                {
+                    if (input == "")
+                    {
+                        Console.WriteLine("The name cannot be empty, please try again...");
+                        string newInput = Console.ReadLine();
+                        input = newInput;
+                    }
+                    else if (input.Length <= 5)
+                    {
+                        pg.passengerName = input;
+                        names[i - 1] = pg.passengerName;
+                        break;
+                    }
+                    else if (input.Length > 5)
+                    {
+                        Console.WriteLine("Name cannot be greater 5 characters, please try again...");
+                        string newInput = Console.ReadLine();
+                        input = newInput;
+                    }
+                    else
+                    {
                         break;
                     }
                 }
 
-                if (input == "q" || input == "Q") {
-                    break;
-                }
-                
-                Passenger pg = new Passenger();
-
-                if (input.Length <= 5) {
-                    pg.passengerName = input;
-                    names[i - 1] = pg.passengerName;
-                } else {
-                    pg.passengerName = input.Trim();// to do
-                }
-
-                if (i <= 40) {
+                if (i <= 40)
+                {
                     pg.seatNumber = i;
                     seats[i - 1] = pg.seatNumber;
-                    
-                } else {
+
+                }
+                else
+                {
                     Console.WriteLine("No more seats can be signed...");
                     break;
                 }
-                
+
                 //Generate random security numbers
                 Random random = new Random();
                 pg.sercurityNumber = random.Next(30000, 999999);
@@ -81,7 +96,7 @@ namespace GenerateBoardingPass
             }
 
             //Display the list of all passengers
-            Info();
+            Info();   
             Console.ReadKey();
 
         }
@@ -89,7 +104,7 @@ namespace GenerateBoardingPass
         //This method lists all passengers' information
         public static void Info()
         {
-            for(int i = 0; i < 40; i++) {
+            for (int i = 0; i < 40; i++) {
                 Console.WriteLine("Passenger {0}: Name: {1}, Seat number: {2} and security number {3}", i + 1, names[i], seats[i], sNumbers[i]);
             }
         }
